@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('Hello World! I got docker to work!');
+  res.send('Hello World! I got docker to work! This should capture my change.');
 });
 
 module.exports = router;
