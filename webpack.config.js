@@ -30,23 +30,3 @@ module.exports = {
     new ExtractTextPlugin({filename: 'style.css'})
   ]
 };
-
-
-
-// {
-//   test: /\.(s*)css$/,
-//   use: [
-//     {
-//       loader: "style-loader"
-//     },
-//     {
-//       loader: "css-loader"
-//     },
-//     {
-//       loader: "sass-loader",
-//       options: {
-//         includesPaths: ["~/client/src", "~/client/dst/style.css"]
-//       }
-//     }
-//   ]      
-// }
