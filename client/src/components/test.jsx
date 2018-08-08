@@ -7,6 +7,7 @@ const Test = (props) => (
     <h3>Should be red</h3>
     <p>some jsx here</p>
     <p>adding some more text</p>
+    <p>Hello world again!</p>
   </div>
 )
 
