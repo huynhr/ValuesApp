@@ -8,5 +8,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/users', users);
+// router.use('/users', (req, res, next) => {
+//   res.send('post request for users');
+// });
 
 module.exports = router;
