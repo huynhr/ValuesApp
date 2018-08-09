@@ -5,5 +5,5 @@
 - To change to database `\c <databaseName>`
 - To view tables `\dt`
 
-[resource]:https://chartio.com/resources/tutorials/how-to-list-databases-and-tables-in-postgresql-using-psql/
+[resource]: https://chartio.com/resources/tutorials/how-to-list-databases-and-tables-in-postgresql-using-psql/
 

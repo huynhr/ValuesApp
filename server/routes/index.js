@@ -1,10 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
+const users = require('./users');
+
 router.get('/', function(req, res, next) {
-  console.log(83902, req.sessionID);
   res.send('Hello World! I got docker to work! This should capture my change.');
 });
+
+router.use('/users', users);
 
 module.exports = router;
