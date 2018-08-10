@@ -7,6 +7,10 @@ router.get('/', function(req, res, next) {
   res.send('Hello World! I got docker to work! This should capture my change.');
 });
 
+router.get('/login', function(req, res, next) {
+  res.send('login page');
+})
+
 router.use('/users', users);
 // router.use('/users', (req, res, next) => {
 //   res.send('post request for users');

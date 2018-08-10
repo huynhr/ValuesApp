@@ -7,8 +7,10 @@ module.exports.createUser = function createUser(req, res) {
     firstName: 'Ray',
     lastName: 'Huynh',
     admin: true
-  }).then(() => {
-    console.log(483902, 'created the user');
+  }).then((x) => {
+    console.log(8908, x);
     res.send('user has been added!');
-  });
+  }).catch((err) => {
+    res.send(err);
+  })
 }
