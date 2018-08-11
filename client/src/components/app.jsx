@@ -1,12 +1,32 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Route,
-  Link
+  Redirect
 } from 'react-router-dom'
 
 import HomeComponent from './home/component.jsx';
-import LoginComponent from './Login/component.jsx';
+import LoginComponent from './login/component.jsx';
+
+const fakeAuth = {
+  isAuthenticated: true,
+  authenticate(cb) {
+    this.isAuthenticated = true
+    setTimeout(cb, 100)
+  },
+  signout(cb) {
+    this.isAuthenticated = false
+    setTimeout(cb, 100)
+  }
+}
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    fakeAuth.isAuthenticated === true
+      ? <Component {...props} />
+      : <Redirect to='/login' />
+  )} />
+)
 
 class App extends React.Component {
   constructor() {
@@ -15,16 +35,14 @@ class App extends React.Component {
       user: true
     }
   }
+
   render() {
-    let comp;
-    if (this.state.user) {
-      comp = <Route path="/" component={ HomeComponent } />
-    } else { 
-      comp = <Route path="/login" component={ LoginComponent }/>
-    }
-    console.log(comp);
+
     return (
-      <div> { comp } </div>
+      <div>
+        <PrivateRoute path='/' component={ HomeComponent }/>
+        <Route to="/login" render={ () => <LoginComponent auth={fakeAuth.isAuthenticated} />} />
+      </div>
     )
   }
 }

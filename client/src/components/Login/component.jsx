@@ -2,8 +2,19 @@ import React from 'react';
 import "./style.scss";
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  
   render() {
-    return <div>Login Page</div>
+    console.log(this.props);
+    return (
+      <div>
+        {
+          this.props.auth ? '' : 'Login Page'
+        }
+      </div>
+    );
   }
 }
 
