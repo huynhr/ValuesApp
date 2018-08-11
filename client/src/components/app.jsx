@@ -2,14 +2,15 @@ import React from 'react';
 import {
   HashRouter,
   Route,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom'
 
 import HomeComponent from './home/component.jsx';
 import LoginComponent from './login/component.jsx';
 
 const fakeAuth = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   authenticate(cb) {
     this.isAuthenticated = true
     setTimeout(cb, 100)
@@ -40,7 +41,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <PrivateRoute path='/' component={ HomeComponent }/>
+        <PrivateRoute exact path='/' component={ HomeComponent }/>
         <Route to="/login" render={ () => <LoginComponent auth={fakeAuth.isAuthenticated} />} />
       </div>
     )
