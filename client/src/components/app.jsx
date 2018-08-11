@@ -1,16 +1,22 @@
 import React from 'react';
+import createHistory from "history/createBrowserHistory"
 import {
-  HashRouter,
+  BrowserRouter,
   Route,
   Redirect,
-  Switch
+  Switch,
+  Link
 } from 'react-router-dom'
+
 
 import HomeComponent from './home/component.jsx';
 import LoginComponent from './login/component.jsx';
+import TestComponent from './test/component.jsx'
+
+const history = createHistory();
 
 const fakeAuth = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   authenticate(cb) {
     this.isAuthenticated = true
     setTimeout(cb, 100)
@@ -37,14 +43,21 @@ class App extends React.Component {
     }
   }
 
-  render() {
+  signOut() {
+    fakeAuth.signout();
+  }
 
+  render() {
     return (
       <div>
-        <Switch>
-          <PrivateRoute exact path='/' component={ HomeComponent }/>
-          <Route to="/login" render={ () => <LoginComponent auth={fakeAuth.isAuthenticated} />} />
-        </Switch>
+        <BrowserRouter>
+          <Switch>
+            <PrivateRoute exact path='/' component={ HomeComponent }/>
+            <PrivateRoute exact path='/test' component={ TestComponent }/>
+            <Route exact path='/login' render={ (props) => <LoginComponent auth={fakeAuth} {...props}/>} />
+          </Switch>
+        </BrowserRouter>
+        <button onClick={() => this.signOut()}>Logout</button>
       </div>
     )
   }
