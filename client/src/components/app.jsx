@@ -10,7 +10,7 @@ import HomeComponent from './home/component.jsx';
 import LoginComponent from './login/component.jsx';
 
 const fakeAuth = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   authenticate(cb) {
     this.isAuthenticated = true
     setTimeout(cb, 100)
@@ -41,8 +41,10 @@ class App extends React.Component {
 
     return (
       <div>
-        <PrivateRoute exact path='/' component={ HomeComponent }/>
-        <Route to="/login" render={ () => <LoginComponent auth={fakeAuth.isAuthenticated} />} />
+        <Switch>
+          <PrivateRoute exact path='/' component={ HomeComponent }/>
+          <Route to="/login" render={ () => <LoginComponent auth={fakeAuth.isAuthenticated} />} />
+        </Switch>
       </div>
     )
   }
