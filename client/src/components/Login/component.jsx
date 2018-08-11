@@ -9,10 +9,13 @@ class Login extends React.Component {
   render() {
     console.log(this.props);
     return (
+      // <div>
+      //   {
+      //     this.props.auth ? '' : 'Login Page'
+      //   }
+      // </div>
       <div>
-        {
-          this.props.auth ? '' : 'Login Page'
-        }
+        Login Page
       </div>
     );
   }
